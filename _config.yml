@@ -9,8 +9,8 @@ description: >
 version:          1.0
 gitbook_version:  3.2.3
 
-url:              'https://peppacat.github.io'
-baseurl:          '/go/note'
+url:              'https://peppacat.github.io/go.note/'
+# baseurl:          '/go/note'
 rss:              RSS
 
 # bootstrap: use the remote theme for the site itself
