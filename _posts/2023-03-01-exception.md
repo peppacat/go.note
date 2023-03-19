@@ -11,9 +11,12 @@ layout: post
  抛出一个panic异常,在defer中通过recover捕获处理
 
 ```go
-package main
+package mainpackage main
 
-import "fmt"
+import (
+	"errors"
+	"fmt"
+)
 
 func main() {
 
@@ -23,10 +26,15 @@ func main() {
 	test()
 	fmt.Println("Hello world")
 
+	err := test1(-1)
+	if err != nil {
+		panic(err)
+	}
+
 }
 
 func test() {
-	// 匿名函数
+	// 匿名函数捕获异常
 	defer func() {
 		error := recover()
 		if error != nil {
@@ -38,6 +46,16 @@ func test() {
 	var n2 int = 0
 	var n3 int = n1 / n2
 	fmt.Println("res = ", n3)
+}
+
+// 自定义异常
+func test1(num int) error {
+	if num < 0 {
+		return errors.New("数据异常")
+	} else {
+		return nil
+	}
+
 }
 
 
